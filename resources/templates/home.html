@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+    <!-- Latest Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link rel="stylesheet" th:href="@{/style.css}" />
+
+</head>
+<body>
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<div class="container">
+    <a class="navbar-brand" href="#"><img class="logo" th:src="@{/logo.jpg}" alt="Logo"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+                <div style="display: flex; align-items: center; border: 2px solid #ccc; border-radius: 25px; overflow: hidden; background-color: white;">
+                    <input type="text" style="border: none; outline: none; padding: 10px; font-size: 16px; flex-grow: 1;" placeholder="Search...">
+                    <button style="background-color: #007BFF; border: none; padding: 10px 15px; cursor: pointer;">
+                        <img src="https://img.icons8.com/ios-glyphs/30/search--v1.png" alt="Search Icon" style="width: 20px; height: 20px;">
+                    </button>
+
+                    <!-- Dropdown with "All" and options -->
+                    <div style="position: relative;">
+                        <button style="background-color: #f8f8f8; border: none; padding: 10px; cursor: pointer; display: flex; align-items: center;">
+                            All
+                            <img src="https://img.icons8.com/ios-glyphs/30/chevron-down.png" alt="Dropdown Icon" style="width: 15px; height: 15px; margin-left: 5px;">
+                        </button>
+                        <div style="display: none; position: absolute; background-color: #f9f9f9; box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); top: 40px; left: 0; z-index: 1; width: 100px;">
+                            <a href="#" style="color: black; padding: 10px; text-decoration: none; display: block; text-align: left;">Books</a>
+                            <a href="#" style="color: black; padding: 10px; text-decoration: none; display: block; text-align: left;">Electronics</a>
+                            <a href="#" style="color: black; padding: 10px; text-decoration: none; display: block; text-align: left;">Clothing</a>
+                            <a href="#" style="color: black; padding: 10px; text-decoration: none; display: block; text-align: left;">Home & Kitchen</a>
+                            <a href="#" style="color: black; padding: 10px; text-decoration: none; display: block; text-align: left;">Toys & Games</a>
+                        </div>
+                    </div>
+                </div>
+
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+            </li>
+            <a href="/signup"><button class="nav-link" style="text-decoration: none;">SignUp</button></a>
+            <a href="/login"><button class="nav-link" style="text-decoration: none;">LogIn</button></a>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/cart"><span class="badge text-bg-danger" th:text="${cartQty}" ></span> Cart</a>
+            </li>
+        </ul>
+    </div>
+</div>
+</nav>
+
+<div class="container-fluid bg-danger text-white py-5">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1>Gifts under $10</h1>
+            <p>Shop early deals</p>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+        <!-- Shop Premium Brands Section -->
+        <div class="col-md-4">
+            <h2>Shop Premium Brands</h2>
+            <div class="row">
+                <div class="col-6">
+                    <img src="dress.jpg" class="img-fluid" alt="Dresses">
+                    <p>Dresses</p>
+                </div>
+                <div class="col-6">
+                    <img src="sweater.jpg" class="img-fluid" alt="Sweaters">
+                    <p>Sweaters</p>
+                </div>
+                <div class="col-6">
+                    <img src="jacket.jpg" class="img-fluid" alt="Jackets">
+                    <p>Jackets</p>
+                </div>
+                <div class="col-6">
+                    <img src="handbag.jpg" class="img-fluid" alt="Handbags">
+                    <p>Handbags</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Today's Deals Section -->
+        <div class="col-md-4">
+            <h2>Today's Deals</h2>
+            <div class="deal-item">
+                <img src="tv.jpg" class="img-fluid" alt="TV">
+                <p>30% off <br>Ends in 09:16</p><br>
+                <p>Unlock Exclusive Discounts Today!</p>
+            </div>
+        </div>
+
+        <!-- Shop Early Holiday Gifts Section -->
+        <div class="col-md-4">
+            <h2>Shop Early Holiday Gifts</h2>
+            <div class="row">
+                <div class="col-6">
+                    <img src="electronics.jpg" class="img-fluid" alt="Electronics">
+                    <p>Electronics</p>
+                </div>
+                <div class="col-6">
+                    <img src="toys.jpg" class="img-fluid" alt="Toys">
+                    <p>Toys</p>
+                </div>
+                <div class="col-6">
+                    <img src="fashion.jpg" class="img-fluid" alt="Fashion">
+                    <p>Fashion</p>
+                </div>
+                <div class="col-6">
+                    <img src="beauty.jpg" class="img-fluid" alt="Beauty">
+                    <p>Beauty</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="col-md-12">
+        <img class="hero-right img-fluid" src="/shoping.jpg" alt="grocery-shop">
+    </div>
+</div>
+</div>
+
+<!-- Product Section Heading -->
+<h1 class="text-center mt-5">Unlock Exclusive Savings Today!</h1>
+
+<!-- Product Grid -->
+<div class="container">
+    <div class="row">
+        <div class="card col-md-3">
+            <img class="card-img-top" src="/newproduct.jpg" alt="Nature Valley Granola Bars, 1.2kg">
+            <div class="card-body">
+                <h5 class="card-title">Nature Valley Granola Bars, 1.2kg</h5>
+                <p class="card-text">5.00 CAD</p>
+                <form action="/add" method="post">
+                    <input type="hidden" name="item" value="Nature Valley Granola Bars, 1.2kg">
+                    <input type="hidden" name="image" value="newproduct.jpg">
+                    <input type="hidden" name="price" value="5.00">
+                    <button class="common-theme-button btn btn-primary" type="submit">Add to Cart</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="card col-md-3">
+            <img class="card-img-top" src="/newproduct1.jpg" alt="Fresh Organic Bananas">
+            <div class="card-body">
+                <h5 class="card-title">Fresh Organic Bananas</h5>
+                <p class="card-text">1.50 CAD</p>
+                <form action="/add" method="post">
+                    <input type="hidden" name="item" value="Fresh Organic Bananas">
+                    <input type="hidden" name="image" value="newproduct1.jpg">
+                    <input type="hidden" name="price" value="1.50">
+                    <button class="common-theme-button btn btn-primary" type="submit">Add to Cart</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="card col-md-3">
+            <img class="card-img-top" src="/newproduct2.jpg" alt="Quaker Oats, 1kg">
+            <div class="card-body">
+                <h5 class="card-title">Quaker Oats, 1kg</h5>
+                <p class="card-text">4.25 CAD</p>
+                <form action="/add" method="post">
+                    <input type="hidden" name="item" value="Quaker Oats, 1kg">
+                    <input type="hidden" name="image" value="newproduct2.jpg">
+                    <input type="hidden" name="price" value="4.25">
+                    <button class="common-theme-button btn btn-primary" type="submit">Add to Cart</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="card col-md-3">
+            <img class="card-img-top" src="/newproduct3.jpg" alt="Gerber Rice Cereal">
+            <div class="card-body">
+                <h5 class="card-title">Gerber Rice Cereal</h5>
+                <p class="card-text">3.99 CAD</p>
+                <form action="/add" method="post">
+                    <input type="hidden" name="item" value="Gerber Rice Cereal">
+                    <input type="hidden" name="image" value="newproduct3.jpg">
+                    <input type="hidden" name="price" value="3.99">
+                    <button class="common-theme-button btn btn-primary" type="submit">Add to Cart</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="card col-md-3">
+            <img class="card-img-top" src="/newproduct4.jpg" alt="Sushi Rice, 10kg">
+            <div class="card-body">
+                <h5 class="card-title">Sushi Rice, 10kg</h5>
+                <p class="card-text">20.00 CAD</p>
+                <form action="/add" method="post">
+                    <input type="hidden" name="item" value="Sushi Rice, 10kg">
+                    <input type="hidden" name="image" value="newproduct4.jpg">
+                    <input type="hidden" name="price" value="20.00">
+                    <button class="common-theme-button btn btn-primary" type="submit">Add to Cart</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="card col-md-3">
+            <img class="card-img-top" src="/newproduct5.jpg" alt="Organic Strawberries">
+            <div class="card-body">
+                <h5 class="card-title">Organic Strawberries</h5>
+                <p class="card-text">6.99 CAD</p>
+                <form action="/add" method="post">
+                    <input type="hidden" name="item" value="Organic Strawberries">
+                    <input type="hidden" name="image" value="newproduct5.jpg">
+                    <input type="hidden" name="price" value="6.99">
+                    <button class="common-theme-button btn btn-primary" type="submit">Add to Cart</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="card col-md-3">
+            <img class="card-img-top" src="/newproduct6.jpg" alt="Kleenex Ultra Soft Tissues">
+            <div class="card-body">
+                <h5 class="card-title">Kleenex Ultra Soft Tissues</h5>
+                <p class="card-text">7.49 CAD</p>
+                <form action="/add" method="post">
+                    <input type="hidden" name="item" value="Kleenex Ultra Soft Tissues">
+                    <input type="hidden" name="image" value="newproduct6.jpg">
+                    <input type="hidden" name="price" value="7.49">
+                    <button class="common-theme-button btn btn-primary" type="submit">Add to Cart</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="card col-md-3">
+            <img class="card-img-top" src="/newproduct7.jpg" alt="Red Onions">
+            <div class="card-body">
+                <h5 class="card-title">Red Onions</h5>
+                <p class="card-text">2.99 CAD</p>
+                <form action="/add" method="post">
+                    <input type="hidden" name="item" value="Red Onions">
+                    <input type="hidden" name="image" value="newproduct7.jpg">
+                    <input type="hidden" name="price" value="2.99">
+                    <button class="common-theme-button btn btn-primary" type="submit">Add to Cart</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3" th:each="product : ${products}">
+            <div class="card mb-4">
+                <img class="card-img-top" th:src="@{'/' + ${product.image}}" alt="Product Image" />
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${product.productName}"></h5>
+                    <p class="card-text" th:text="${product.price} + ' CAD'"></p>
+                    <form action="/add" method="post">
+                        <input type="hidden" name="item" th:value="${product.productName}">
+                        <input type="hidden" name="image" th:value="@{'/' + ${product.image}}">
+                        <input type="hidden" name="price" th:value="${product.price}">
+                        <button class="common-theme-button btn btn-primary" type="submit">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<footer class="footer-area bg-dark text-light text-center text-lg-start mt-5">
+    <div class="container p-4">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h5 class="text-uppercase">Get to Know Us</h5>
+                <ul class="list-unstyled mb-0">
+                    <li><a href="#!" class="text-light">Careers</a></li>
+                    <li><a href="#!" class="text-light">Blog</a></li>
+                    <li><a href="#!" class="text-light">About Us</a></li>
+                    <li><a href="#!" class="text-light">Investor Relations</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h5 class="text-uppercase">Make Money with Us</h5>
+                <ul class="list-unstyled mb-0">
+                    <li><a href="#!" class="text-light">Sell on Our Platform</a></li>
+                    <li><a href="#!" class="text-light">Affiliate Program</a></li>
+                    <li><a href="#!" class="text-light">Advertise Your Products</a></li>
+                    <li><a href="#!" class="text-light">Fulfillment by Us</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h5 class="text-uppercase">Payment Products</h5>
+                <ul class="list-unstyled mb-0">
+                    <li><a href="#!" class="text-light">Credit Cards</a></li>
+                    <li><a href="#!" class="text-light">Gift Cards</a></li>
+                    <li><a href="#!" class="text-light">Shop with Points</a></li>
+                    <li><a href="#!" class="text-light">Reload Your Balance</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h5 class="text-uppercase">Let Us Help You</h5>
+                <ul class="list-unstyled mb-0">
+                    <li><a href="#!" class="text-light">Your Account</a></li>
+                    <li><a href="#!" class="text-light">Returns Center</a></li>
+                    <li><a href="#!" class="text-light">100% Purchase Protection</a></li>
+                    <li><a href="#!" class="text-light">Customer Service</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="text-center p-3 bg-secondary text-white">
+        © 2024 Your Company Name. All rights reserved.
+    </div>
+</footer>
+<!-- Latest Bootstrap JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

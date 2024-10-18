@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Signup Page</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/style.css}" rel="stylesheet"/>
+    <style>
+        body {
+            background-image: url('img1.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    </style>
+</head>
+<body>
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="#"><img class="logo" th:src="@{/logo.jpg}" alt="Logo"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <div style="display: flex; align-items: center; border: 2px solid #ccc; border-radius: 25px; overflow: hidden; background-color: white;">
+                        <input type="text" style="border: none; outline: none; padding: 10px; font-size: 16px; flex-grow: 1;" placeholder="Search...">
+                        <button style="background-color: #007BFF; border: none; padding: 10px 15px; cursor: pointer;">
+                            <img src="https://img.icons8.com/ios-glyphs/30/search--v1.png" alt="Search Icon" style="width: 20px; height: 20px;">
+                        </button>
+
+                        <!-- Dropdown with "All" and options -->
+                        <div style="position: relative;">
+                            <button style="background-color: #f8f8f8; border: none; padding: 10px; cursor: pointer; display: flex; align-items: center;">
+                                All
+                                <img src="https://img.icons8.com/ios-glyphs/30/chevron-down.png" alt="Dropdown Icon" style="width: 15px; height: 15px; margin-left: 5px;">
+                            </button>
+                            <div style="display: none; position: absolute; background-color: #f9f9f9; box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); top: 40px; left: 0; z-index: 1; width: 100px;">
+                                <a href="#" style="color: black; padding: 10px; text-decoration: none; display: block; text-align: left;">Books</a>
+                                <a href="#" style="color: black; padding: 10px; text-decoration: none; display: block; text-align: left;">Electronics</a>
+                                <a href="#" style="color: black; padding: 10px; text-decoration: none; display: block; text-align: left;">Clothing</a>
+                                <a href="#" style="color: black; padding: 10px; text-decoration: none; display: block; text-align: left;">Home & Kitchen</a>
+                                <a href="#" style="color: black; padding: 10px; text-decoration: none; display: block; text-align: left;">Toys & Games</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+                <a href="/login"><button class="theme-buuton btn btn-primary">LogIn</button></a>
+                <li class="nav-item">
+                    <a class="nav-link" href="/cart"><span class="badge text-bg-danger" th:text="${cartQty}" ></span> Cart</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <h2 class="text-center">Signup</h2>
+
+    <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+    <div th:if="${success}" class="alert alert-success" th:text="${success}"></div>
+
+    <form th:action="@{/signup-v}" method="post"  class="mt-4">
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text"  name="name" class="form-control" id="name" placeholder="Enter your name" required/>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email"   name="email"  class="form-control" id="email" placeholder="Enter your email" required/>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password"   name="password"  class="form-control" id="password" placeholder="Enter your password" required/>
+        </div>
+        <div class="mb-3">
+            <label for="vpassword" class="form-label">Verify Password</label>
+            <input type="password"   name="vpassword"  class="form-control" id="vpassword" placeholder="Re-enter your password" required/>
+        </div>
+        <button type="submit" class="btn btn-primary">Sign Up</button>
+
+    </form>
+</div>
+
+<!-- Footer -->
+<footer class="footer-area bg-dark text-light text-center text-lg-start mt-5">
+    <div class="container p-4">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h5 class="text-uppercase">Get to Know Us</h5>
+                <ul class="list-unstyled mb-0">
+                    <li><a href="#!" class="text-light">Careers</a></li>
+                    <li><a href="#!" class="text-light">Blog</a></li>
+                    <li><a href="#!" class="text-light">About Us</a></li>
+                    <li><a href="#!" class="text-light">Investor Relations</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h5 class="text-uppercase">Make Money with Us</h5>
+                <ul class="list-unstyled mb-0">
+                    <li><a href="#!" class="text-light">Sell on Our Platform</a></li>
+                    <li><a href="#!" class="text-light">Affiliate Program</a></li>
+                    <li><a href="#!" class="text-light">Advertise Your Products</a></li>
+                    <li><a href="#!" class="text-light">Fulfillment by Us</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h5 class="text-uppercase">Payment Products</h5>
+                <ul class="list-unstyled mb-0">
+                    <li><a href="#!" class="text-light">Credit Cards</a></li>
+                    <li><a href="#!" class="text-light">Gift Cards</a></li>
+                    <li><a href="#!" class="text-light">Shop with Points</a></li>
+                    <li><a href="#!" class="text-light">Reload Your Balance</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h5 class="text-uppercase">Let Us Help You</h5>
+                <ul class="list-unstyled mb-0">
+                    <li><a href="#!" class="text-light">Your Account</a></li>
+                    <li><a href="#!" class="text-light">Returns Center</a></li>
+                    <li><a href="#!" class="text-light">100% Purchase Protection</a></li>
+                    <li><a href="#!" class="text-light">Customer Service</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="text-center p-3 bg-secondary text-white">
+        © 2024 Your Company Name. All rights reserved.
+    </div>
+</footer>
+
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
